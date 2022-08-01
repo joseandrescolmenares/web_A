@@ -23,8 +23,8 @@ export default function Cards({
   const dispatch = useDispatch();
   const deleteId = (id) => {
     dispatch(eliminarProducto(id));
-    socket.emit("mensaje", "CAMBIO");
     setTimeout(() => {
+      socket.emit("mensaje", "CAMBIO");
       dispatch(getProductos());
     }, 1000);
   };

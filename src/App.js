@@ -7,10 +7,8 @@ import s from './css/App.module.css'
 function App() {
   const dispatch = useDispatch();
   const produ = useSelector((state) => state.productos);
-  // useEffect(() => {
-  //   socket.emit("mensaje", "CAMBIO");
-  // }, []);
-  console.log(produ);
+ 
+  
   useEffect(() => {
     dispatch(getProductos());
   }, []);
