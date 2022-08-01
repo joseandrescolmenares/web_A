@@ -29,7 +29,7 @@ export function eliminarProducto(id) {
     console.log(input.title)
     return async dispatch => {
         try {
-   const update = await axios.put(`https://mongodbback.herokuapp.com/productos${id}`, input)
+   const update = await axios.put(`https://mongodbback.herokuapp.com/productos/${id}`, input)
    return dispatch({
     type:'MODIFICAR'
    })
