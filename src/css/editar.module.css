@@ -1,0 +1,22 @@
+.containerForm{
+background-color: aliceblue;
+height:550px;
+width:380px;
+display:flex;
+flex-direction: column;
+justify-content:center;
+align-items:center;
+border-radius:20px;
+}
+
+.form{
+    margin:40px;
+}
+.label{
+    text-align:center;
+}
+.botones{
+    width:100%;
+    display:flex;
+    justify-content: center;
+}
