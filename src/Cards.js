@@ -33,9 +33,10 @@ export default function Cards({
   const dispatch = useDispatch();
   const deleteId = (id) => {
     dispatch(eliminarProducto(id));
-    socket.emit("mensaje", "CAMBIO");
+    
     setTimeout(() => {
       dispatch(getProductos());
+      socket.emit("mensaje", "CAMBIO");
     }, 1000);
   };
 

@@ -42,7 +42,7 @@ export function PostProductos(input){
   console.log(input)
   return async dispatch => {
     try{
-    let post = await axios.post('http://localhost:9000/productos/', input)
+    let post = await axios.post('https://mongodbback.herokuapp.com', input)
     return dispatch({
       type: 'POST'
     })
