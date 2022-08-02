@@ -23,11 +23,10 @@ export default function Editar({ id, title, descripcion, puntaje, precio }) {
 
   const handleSave = () => {
     dispatch(editarProducto(id, input));
-   
+    socket.emit("mensaje", "CAMBIO");
 
     setTimeout(() => {
       dispatch(getProductos());
-      socket.emit("mensaje", "CAMBIO");
     }, 1000);
   };
 

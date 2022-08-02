@@ -3,7 +3,7 @@ import axios from "axios";
 export function getProductos(){
     return async function (dispatch) {
         try {
-           let result = await axios.get('https://mongodbback.herokuapp.com')
+           let result = await axios.get('http://localhost:9000/productos')
            console.log(result.data)
            return dispatch({
             type: "GET",
@@ -18,7 +18,7 @@ export function eliminarProducto(id) {
     console.log(id)
     return async dispatch => {
         
-    await axios.delete(`https://mongodbback.herokuapp.com/delete/${id}`)
+    await axios.delete(`http://localhost:9000/productos/delete/${id}`)
       return dispatch({
         type: 'DELETE'
       })
@@ -29,7 +29,7 @@ export function eliminarProducto(id) {
     console.log(input.title)
     return async dispatch => {
         try {
-   const update = await axios.put(`https://mongodbback.herokuapp.com/${id}`, input)
+   const update = await axios.put(`http://localhost:9000/productos/${id}`, input)
    return dispatch({
     type:'MODIFICAR'
    })
@@ -42,7 +42,7 @@ export function PostProductos(input){
   console.log(input)
   return async dispatch => {
     try{
-    let post = await axios.post('https://mongodbback.herokuapp.com', input)
+    let post = await axios.post('http://localhost:9000/productos/', input)
     return dispatch({
       type: 'POST'
     })
