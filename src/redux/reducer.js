@@ -1,5 +1,6 @@
 const stateInitial = {
-   productos: []
+   productos: [],
+  
   };
   
   
@@ -16,6 +17,8 @@ const stateInitial = {
           case 'DELETE': return state
          
           case 'MODIFICAR': return state
+
+          case 'POST': return state 
       default:
         return state;
     }

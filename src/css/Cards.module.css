@@ -63,3 +63,8 @@ body{
     transition-duration: 1s;
     cursor: pointer;
 }
+
+.render{
+  background-color:beige;
+  height: 100vh;
+}

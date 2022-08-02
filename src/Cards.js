@@ -3,8 +3,18 @@ import s from "./css/Cards.module.css";
 import socket from "./coponentes/socket";
 import { eliminarProducto, getProductos } from "./redux/actions";
 import { useSelector, useDispatch } from "react-redux";
+import DeleteIcon from "@material-ui/icons/Delete";
+import Button from '@material-ui/core/Button';
 import { Modal } from "@material-ui/core";
 import Editar from "./editar";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles((theme) => ({
+  button: {
+    margin: theme.spacing(1),
+  },
+}));
+
 export default function Cards({
   title,
   id,
@@ -15,7 +25,7 @@ export default function Cards({
   cantidad,
 }) {
   const [cierre, setCierre] = useState(false);
-
+  const classes = useStyles();
   const abrieCerrar = () => {
     setCierre(!cierre);
   };
@@ -23,8 +33,8 @@ export default function Cards({
   const dispatch = useDispatch();
   const deleteId = (id) => {
     dispatch(eliminarProducto(id));
+    socket.emit("mensaje", "CAMBIO");
     setTimeout(() => {
-      socket.emit("mensaje", "CAMBIO");
       dispatch(getProductos());
     }, 1000);
   };
@@ -43,7 +53,13 @@ export default function Cards({
           <button onClick={abrieCerrar} className={s.boton}>
             Editar
           </button>
-          <button className={s.boton} onClick={() => deleteId(id)}>Eliminar</button>
+          <Button
+            variant="contained"
+            color="secondary"
+            className={classes.button}
+            startIcon={<DeleteIcon />}
+            onClick={ () => deleteId(id)}
+          ></Button>
         </div>
       </div>
       <Modal className={s.modal} open={cierre} onClose={abrieCerrar}>
